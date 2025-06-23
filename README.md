@@ -4,7 +4,7 @@ We introduce a fast Self-adapting Forward-Forward Network (**SaFF-Net**) for med
 Our approach enables more effective model training and eliminates the previously essential requirement for an arbitrarily chosen Goodness function in FFA.
 We evaluate our approach on several benchmarking datasets in comparison with standard Back-Propagation (BP) neural networks showing that FFA-based networks can compete with standard models with notably fewer parameters and function evaluations, especially, in one-shot scenarios and large batch sizes. [1]
 
-[Paper]
+see **MICCAI MLMI** Publication: [Resource-efficient medical image analysis with self-adapting forward-forward networks](https://link.springer.com/chapter/10.1007/978-3-031-73290-4_18)
 
 ## Forward Forward Algorithm
 ![Forward Forward Algorithm](/figures/FF_algorithm.png)

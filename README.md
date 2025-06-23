@@ -23,4 +23,15 @@ The fixed parameters for the pipeline are given by default or via an experiment 
 Classification on MNIST. ACC - Accuracy, AUC - Area Under the Receiver Operating characteristic, mAP - Mean Average Precision vs. Number of Parameters Comparison for MLP and FFA (top) and CNN and CFFA (bottom) with maximum batch size. Ours in orange.
 
 ## Citing
-[Cite] 
+@inproceedings{muller2024resource,
+  title={Resource-efficient medical image analysis with self-adapting forward-forward networks},
+  author={M{\"u}ller, Johanna P and Kainz, Bernhard},
+  booktitle={International Workshop on Machine Learning in Medical Imaging},
+  pages={180--190},
+  year={2024},
+  organization={Springer}
+}
+
+
+#### Acknowledgements
+(Some) HPC resources were provided by the Erlangen National High Performance Computing Center (NHR@FAU) of the Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU) under the NHR projects b143dc and b180dc. NHR funding is provided by federal and Bavarian state authorities. NHR@FAU hardware is partially funded by the German Research Foundation (DFG) – 440719683.

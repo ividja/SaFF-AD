@@ -24,7 +24,7 @@ Classification on MNIST. ACC - Accuracy, AUC - Area Under the Receiver Operating
 
 ## Citing
 [1] Müller, J. P., & Kainz, B. (2024, October). Resource-efficient medical image analysis with self-adapting forward-forward networks. In International Workshop on Machine Learning in Medical Imaging (pp. 180-190). Cham: Springer Nature Switzerland.
-
+```
 @inproceedings{muller2024resource,
   title={Resource-efficient medical image analysis with self-adapting forward-forward networks},
   author={M{\"u}ller, Johanna P and Kainz, Bernhard},
@@ -33,8 +33,8 @@ Classification on MNIST. ACC - Accuracy, AUC - Area Under the Receiver Operating
   year={2024},
   organization={Springer}
 }
-
 ```
+
 #### Acknowledgements
 (Some) HPC resources were provided by the Erlangen National High Performance Computing Center (NHR@FAU) of the Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU) under the NHR projects b143dc and b180dc. NHR funding is provided by federal and Bavarian state authorities. NHR@FAU hardware is partially funded by the German Research Foundation (DFG) – 440719683.
-```
+

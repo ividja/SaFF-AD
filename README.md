@@ -2,7 +2,7 @@
 
 We introduce a fast Self-adapting Forward-Forward Network (**SaFF-Net**) for medical imaging analysis, mitigating power consumption and resource limitations, which currently primarily stem from the prevalent reliance on back-propagation for model training and fine-tuning. Building upon the recently proposed Forward-Forward Algorithm (FFA), we introduce the Convolutional Forward-Forward Algorithm (CFFA), a parameter-efficient reformulation that is suitable for advanced image analysis and overcomes the speed and generalization constraints of the original FFA. To address hyper-parameter sensitivity we are also introducing a self-adapting framework, which tunes **SaFF-Net** to the optimal settings.
 Our approach enables more effective model training and eliminates the previously essential requirement for an arbitrarily chosen Goodness function in FFA.
-We evaluate our approach on several benchmarking datasets in comparison with standard Back-Propagation (BP) neural networks showing that FFA-based networks can compete with standard models with notably fewer parameters and function evaluations, especially, in one-shot scenarios and large batch sizes. 
+We evaluate our approach on several benchmarking datasets in comparison with standard Back-Propagation (BP) neural networks showing that FFA-based networks can compete with standard models with notably fewer parameters and function evaluations, especially, in one-shot scenarios and large batch sizes. [1]
 
 [Paper]
 
@@ -23,6 +23,7 @@ The fixed parameters for the pipeline are given by default or via an experiment 
 Classification on MNIST. ACC - Accuracy, AUC - Area Under the Receiver Operating characteristic, mAP - Mean Average Precision vs. Number of Parameters Comparison for MLP and FFA (top) and CNN and CFFA (bottom) with maximum batch size. Ours in orange.
 
 ## Citing
+[1] Müller, J. P., & Kainz, B. (2024, October). Resource-efficient medical image analysis with self-adapting forward-forward networks. In International Workshop on Machine Learning in Medical Imaging (pp. 180-190). Cham: Springer Nature Switzerland.
 
 @inproceedings{muller2024resource,
   title={Resource-efficient medical image analysis with self-adapting forward-forward networks},

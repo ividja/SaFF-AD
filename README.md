@@ -48,7 +48,7 @@ Comparison of classification and anomaly detection performance versus model size
 
 ---
 
-## Publication
+### Publication
 
 The original SaFF-Net framework was introduced in:
 
@@ -62,7 +62,7 @@ SaFF-AD extends this work with a focus on **self-supervised anomaly detection** 
 
 ---
 
-## Citation for SaFF-Net
+### Citation for SaFF-Net
 
 ```bibtex
 @inproceedings{muller2024resource,

@@ -1,3 +1,5 @@
+**_NOTE: An updated implementation for SaFF-AD will be released soon. Until then, the repository contains the SaFF-Net codebase._**
+
 # SaFF-AD
 
 **SaFF-AD** extends the Self-adapting Forward-Forward Network (**[SaFF-Net](https://github.com/ividja/SaFF-Net)**) to **self-supervised anomaly detection** in medical imaging. The framework builds on the Forward-Forward Algorithm (FFA) and its convolutional variant (CFFA) to enable **resource-efficient, layer-wise training without back-propagation**, while supporting both **task-specific anomaly objectives** and **general representation learning**.
@@ -5,9 +7,6 @@
 SaFF-AD is designed for settings in which computational resources, memory, or energy consumption are constrained, and where labelled anomalous data are scarce or unavailable. The framework supports 1D, 2D, and 3D medical imaging data and scales efficiently across resolutions and hardware configurations.
 
 This repository contains the complete SaFF-AD pipeline, including self-configuration, Forward-Forward training, and anomaly inference.
-
-**_NOTE: An updated implementation for SaFF-AD will be released soon. Until then, the repository contains the SaFF-Net codebase._**
-
 
 ---
 

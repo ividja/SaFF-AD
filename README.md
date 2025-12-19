@@ -1,40 +1,76 @@
-# SaFF-Net
+# SaFF-AD
 
-We introduce a fast Self-adapting Forward-Forward Network (**SaFF-Net**) for medical imaging analysis, mitigating power consumption and resource limitations, which currently primarily stem from the prevalent reliance on back-propagation for model training and fine-tuning. Building upon the recently proposed Forward-Forward Algorithm (FFA), we introduce the Convolutional Forward-Forward Algorithm (CFFA), a parameter-efficient reformulation that is suitable for advanced image analysis and overcomes the speed and generalization constraints of the original FFA. To address hyper-parameter sensitivity we are also introducing a self-adapting framework, which tunes **SaFF-Net** to the optimal settings.
-Our approach enables more effective model training and eliminates the previously essential requirement for an arbitrarily chosen Goodness function in FFA.
-We evaluate our approach on several benchmarking datasets in comparison with standard Back-Propagation (BP) neural networks showing that FFA-based networks can compete with standard models with notably fewer parameters and function evaluations, especially, in one-shot scenarios and large batch sizes. [1]
+**SaFF-AD** extends the Self-adapting Forward-Forward Network (**[SaFF-Net](https://github.com/ividja/SaFF-Net)**) to **self-supervised anomaly detection** in medical imaging. The framework builds on the Forward-Forward Algorithm (FFA) and its convolutional variant (CFFA) to enable **resource-efficient, layer-wise training without back-propagation**, while supporting both **task-specific anomaly objectives** and **general representation learning**.
 
-see **MICCAI MLMI** Publication: [Resource-efficient medical image analysis with self-adapting forward-forward networks](https://link.springer.com/chapter/10.1007/978-3-031-73290-4_18)
+SaFF-AD is designed for settings in which computational resources, memory, or energy consumption are constrained, and where labelled anomalous data are scarce or unavailable. The framework supports 1D, 2D, and 3D medical imaging data and scales efficiently across resolutions and hardware configurations.
 
-## Forward Forward Algorithm
+This repository contains the complete SaFF-AD pipeline, including self-configuration, Forward-Forward training, and anomaly inference.
+
+**_NOTE: An updated implementation for SaFF-AD will be released soon. Until then, the repository contains the SaFF-Net codebase._**
+
+
+---
+
+## Key Features
+
+- **Self-supervised anomaly detection** based on Forward-Forward learning  
+- **Convolutional Forward-Forward Algorithm (CFFA)** for 2D and 3D medical images  
+- **Anomaly-specific and general loss functions**
+  - $\mathcal{L}_\text{anomaly}$ for direct anomaly separation
+  - $\mathcal{L}_\text{general}$ for robust representation learning
+- **Layer-wise optimisation without back-propagation**
+- **Self-adapting configuration** based on data characteristics and hardware constraints
+- **Highly parameter-efficient models**, competitive with back-propagation baselines
+- Support for **one-shot and iterative training regimes**
+
+---
+
+## Forward-Forward Algorithm
+
 ![Forward Forward Algorithm](/figures/FF_algorithm.png)
 
-The Forward-Forward Multi-Layer Perceptron as presented by [Hinton, 2022](https://arxiv.org/abs/2212.13345) (left), the Forward-Forward Convolutional Neural Network (right). The networks are optimised layer-wise. The positive and negative samples are fed into the first layer and via layer normalisation, we obtain orientation and length of the activation. The orientation is forwarded to the next layer as its input. The length is used for the computation of the goodness. Each layer is optimised so that positive samples have high goodness (> threshold) and negative samples have low goodness (< threshold). For inference, the sum of the goodness of all layers, excluding the first layer, needs to be determined for every possible label.
+The Forward-Forward Multi-Layer Perceptron and Forward-Forward Convolutional Neural Network follow the layer-wise optimisation scheme introduced by Hinton (2022). Positive and negative samples are generated via label encoding or synthetic anomaly construction and processed independently at each layer. After layer normalisation, the **orientation** of the activation is forwarded to the next layer, while its **magnitude** defines the layer goodness. Layers are trained to assign high goodness to positive samples and low goodness to negative samples. During inference, goodness scores are aggregated across layers to perform classification or anomaly detection.
 
-## Resource-efficient Framework
+---
+
+## SaFF-AD Framework
+
 ![Framework](/figures/FF_framework.png)
 
-Proposed Self-adapting **SaFF-Net** framework. Key features of the training data and the hardware components are used for self-configuration. 
-The fixed parameters for the pipeline are given by default or via an experiment file. After self-configuration, the **SaFF-Net** selects the best network configuration and starts training. Inference, postprocessing, calibration and pruning can be enabled.
+The SaFF-AD framework performs **automatic self-configuration** based on training data properties (e.g. modality, dimensionality, resolution, intensity distribution) and available hardware resources (e.g. GPU memory). This process determines architectural parameters, optimisation settings, and training modes. The framework supports self-supervised and supervised training, pruning, early stopping, calibration, and post-processing, enabling flexible deployment across applications and compute environments.
 
-### Efficiency
+---
+
+## Efficiency
+
 ![Efficiency](/figures/FF_efficiency.png)
 
-Classification on MNIST. ACC - Accuracy, AUC - Area Under the Receiver Operating characteristic, mAP - Mean Average Precision vs. Number of Parameters Comparison for MLP and FFA (top) and CNN and CFFA (bottom) with maximum batch size. Ours in orange.
+Comparison of classification and anomaly detection performance versus model size. SaFF-AD achieves competitive accuracy, AUC, and average precision with significantly fewer parameters than back-propagation-based MLPs and CNNs, particularly in large-batch and one-shot training scenarios.
 
-## Citing
-[1] Müller, J. P., & Kainz, B. (2024, October). Resource-efficient medical image analysis with self-adapting forward-forward networks. In International Workshop on Machine Learning in Medical Imaging (pp. 180-190). Cham: Springer Nature Switzerland.
-```
+---
+
+## Publication
+
+The original SaFF-Net framework was introduced in:
+
+**Resource-efficient medical image analysis with self-adapting forward-forward networks**  
+Johanna P. Müller, Bernhard Kainz  
+MICCAI Workshop on Machine Learning in Medical Imaging (MLMI), 2024  
+
+https://link.springer.com/chapter/10.1007/978-3-031-73290-4_18
+
+SaFF-AD extends this work with a focus on **self-supervised anomaly detection** using Forward-Forward learning.
+
+---
+
+## Citation for SaFF-Net
+
+```bibtex
 @inproceedings{muller2024resource,
   title={Resource-efficient medical image analysis with self-adapting forward-forward networks},
   author={M{\"u}ller, Johanna P and Kainz, Bernhard},
   booktitle={International Workshop on Machine Learning in Medical Imaging},
   pages={180--190},
   year={2024},
-  organization={Springer}
+  organisation={Springer}
 }
-```
-
-#### Acknowledgements
-(Some) HPC resources were provided by the Erlangen National High Performance Computing Center (NHR@FAU) of the Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU) under the NHR projects b143dc and b180dc. NHR funding is provided by federal and Bavarian state authorities. NHR@FAU hardware is partially funded by the German Research Foundation (DFG) – 440719683.
-
